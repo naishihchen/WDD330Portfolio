@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<script>
+			//Function Declaration
+			function hello() {
+				console.log("Hello World!");
+			}
+
+			//Function Expression - naming the function is optional
+			const goodbye = function() {
+				console.log("Goodbye World!");
+			}
+
+			//Function Expression with constructors. Not recommended due to added syntax
+			const hi = new Function('console.log("Hello World!");');
+
+			hello();
+
+			goodbye();
+
+			//Referencing function, not calling it.
+			goodbye;
+
+			//Assigning function to another variable.
+			seeya = goodbye;
+
+			seeya();
+
+			//returning the output of a function, instead of putting it to the console.
+			function howdy() {
+				return 'Howdy World!';
+			}
+
+			const message = howdy();
+
+			//Functions using parameters
+			function square(x) {
+				//return x*x;
+				console.log(x*x);
+			}
+
+			square(4.5);
+
+			//calculate the average of 3 numbers.
+			function mean(a,b,c) {
+				//return (a+b+c)/3
+				console.log((a+b+c)/3);
+			}
+
+			mean(1, 3, 6);
+
+			//Testing incorrect inputs.
+			mean(1,2);
+
+			//only recognizes 3 parameters
+			mean(1,2,3,4,5);
+
+
+			//introducing the arguments attribute
+			function arguments() {
+				//return arguments;
+				console.log(arguments);
+			}
+
+			arguments('hello', NaN);
+
+			arguments(1,2,3,4,5);
+
+			//the Arguments attribute is array-like, but not an array
+			//so to be able to use all the advantages of arrays, use the rest operator
+			function rest(...args) {
+				for (arg of args) {
+					console.log(arg);
+				}
+			}
+
+			//Practical example of rest operator.
+			function newMean(...values) {
+				let total = 0;
+				for(const value of values) {
+					total += value;
+				}
+
+				//return total/values.length;
+				console.log(total/values.length)
+			}
+
+			newMean(2,8,13,11,4,2);
+
+			//Default Parameters in action.
+			function defaultHello(name="World") {
+				console.log(`Hello ${name}!`);
+			}
+
+			defaultHello();
+
+			defaultHello('Universe');
+
+
+			//Default parameters should come after non-default ones.
+			function discount(price, amount = 10) {
+				//return price*(100-amount)/100;
+				console.log(price*(100-amount)/100);
+			}
+
+			discount(20);
+
+			//Non-default parameters can always supercede defaults.
+			discount(15, 20);
+
+			//HOWEVER, the first function call will not work if default parameters come before non-defaults.
+
+			//Arrow functions
+			 const arrowSquare = x => x*x;
+
+			 //Much easier to write. If you know what you're doing, they can save a lot of time and space.
+
+			 const arrowAdd = (x,y) => x + y;
+
+			 //If no parameters, you must include parenthesis.
+			 const arrowHello = () => alert('Hello World!');
+
+			 const tax = (salary) => {
+			 	const taxable = salary - 8000;
+			 	const lowerRate = 0.25 * taxable;
+			 	taxable = taxable - 20000;
+			 	const higherRate = 0.4 * taxable;
+			 	//return lowerRate + higherRate;
+			 	console.log(lowerRate + higherRate);
+			 }
+
+			 //Hoisting
+			 //Functions are automatically hoisted, which means 
+			 //they can be used before they are defined.
+			 hoist();
+
+			 function hoist() {
+			 	console.log('Hoist Me!');
+			 }
+
+			 //var type variable declarations are hoisted, variable assignments are not.
+			 console.log(name);
+
+			 var name = 'Alexa';
+
+			 console.log(name);
+
+
+			 //function expressions are not hoisted, but function declarations are.
+
+			 //helloExpression(); throws error
+
+			 helloDeclaration();
+
+			 var helloExpression = function() {
+			 	console.log('hello');
+			 }
+
+			 function helloDeclaration() {
+			 	console.log('hello');
+			 }
+
+			 //Now the expression function is valid.
+			 helloExpression();
+
+
+			 //Callbacks: U?sing functions inside another function.
+			 function sing(song, callback) {
+			 	console.log(`I'm singing along to ${song}.`)
+			 	if (callback) callback();
+			 }
+
+			 sing("Let It Go");
+
+			 function dance() {
+			 	console.log("I'm moving my body to the groove.");
+			 }
+
+			 sing("Let It Go", dance)
+
+
+			 //Callbacks also work for anonymous functions defined in the function call.
+			 sing("Let It Go", ()=>{ console.log("I'm standing on my head.");});
+
+
+			 //sort() works great for strings, not so much for numbers.
+			 [1, 3, 12, 5, 23, 18, 7].sort();
+
+
+			 //Solution: provide a callback function to insert into sort() that will do the job for numbers.
+			 function numerically(a,b) {
+			 	return a-b;
+			 }
+
+			 [1, 3, 12, 5, 23, 18, 7].sort(numerically);
+
+
+			 //Using for loops to affect every value is not optimal.
+			 const colors = ["Red", "Green", "Blue"];
+
+			 for(let i = 0, max = colors.length; i < max; i++) {
+			 	console.log(`Color at position${i} is ${colors[i]}`);
+			 }
+
+
+			 //forEachfunctions solve this problem.
+			 colors.forEach( (color, index) =>
+			 	console.log(`Color at position${index} is ${color}`));
+
+
+			 //map() is the same kind of function, but returns the answers into an array. It can also take callbacks.
+			 [1,2,3].map( square );
+
+			 [1,2,3].map(x => 2*x);
+
+			 ['red','green','blue'].map( color => `<p>${color.toUpperCase()}</p>` );
+
+			 ['red','green','blue'].map( (color, index, array) => `Element ${index} is ${color}. There are ${array.length} items in total.`);
+
+
+			 //The reduce function takes the array and combines each value in a way the user specifies to it.
+			 [1,2,3,4,5].reduce( (acc,val) => acc + val );
+
+			 //Reduce can also take a second value after the function initialization, which is the starting point of the original variable.
+			 [1,2,3,4,5].reduce( (acc,val) => acc + val, 10);
+
+
+			 //This function works with strings too.
+			 const sentence = 'The quick brown fox jumped over the lazy dog';
+
+			 const words = sentence.split();
+
+			 const total = words.reduce( (acc,word) => acc + word.length, 0);
+
+			 const average = total/words.length;
+
+
+			 //Filter returns an array made up of the values that pass through the callback's filtering process.
+			 const numbers = [ 2, 7, 6, 5, 11, 23, 12 ];
+
+			 numbers.filter(x => x%2 === 0 );
+
+
+			 const array = [ 0, 1, '0', false, true, 'hello' ];
+			 array.filter(Boolean);
+
+			 array.filter(x => !x);
+
+
+			 //you can also combine, or 'chain' methods together.
+			 [1,2,3].map( x => x*x ).reduce((acc,x) => acc + x);
+
+			 const sales = [ 100, 230, 55];
+			 totalAfterTaxSales = sales.map( (amount) => amount * 1.15).reduce( (acc,val) => acc + val );
+
+
+
+			 //Now, to use this knowledge to streamline a previous function.
+			 function newestMean(array, callback) {
+			 	if (callback) {
+			 		array.map( callback );
+			 	}
+			 	const total = array.reduce((a, b) => a + b);
+			 	//return total/array.length;
+			 	console.log(total/array.length);
+			 }
+
+
+			 newestMean([2,5,7,11,4]);
+
+			 newestMean([2,5,7,11,4], x => 2*x);
+
+			 newestMean([2,5,7,11,4],square);
+
+
+			 //Final test: combine all things together.
+
+			 const quiz = [ ["What is Superman's real name?","Clark Kent"], ["What is Wonder Woman's real name?","Diana Prince"], ["What is Batman's real name?","Bruce Wayne"] ];
+			
+			//game init
+			function start(quiz){ let score = 0; 
+				for(const [question,answer] of quiz){ const response = ask(question); check(response,answer); } 
+
+				//game over
+				gameOver();
+
+				// function declarations
+				function ask(question){ return prompt(question); }
+				
+				function check(response,answer){ if(response === answer){ alert('Correct!'); score++; } else { alert(`Wrong! The correct answer was ${answer}`); } 
+			}
+
+				function gameOver(){ 
+				alert(`Game Over, you scored ${score} point${score !== 1 ? 's' : ''}`); 
+			} 
+		}
+
+		start(quiz);
+		</script>
+	</head>
+</html>
