@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<script>
+			const superman = { 
+				name: 'Superman', 'real name': 'Clark Kent', 
+				height: 75, 
+				weight: 235, 
+				hero: true, 
+				villain: false, 
+				allies: ['Batman','Supergirl','Superboy'], 
+				fly() { return 'Up, up and away!'; } };
+
+				//Preferred way to create an object literal
+				const spiderman = {}
+
+				//Not preffered. Too wordy
+				//const spiderman = new Object();
+
+				const name = 'Iron Man'; 
+				const realName = 'Tony Stark';
+				
+				// long way 
+				const ironMan = { name: name, realName: realName };
+				
+				// short ES6 way 
+				const ironman = { name, realName }
+
+
+				//properties can be accessed through dot notation or array format.
+				superman.name
+				superman['name']
+
+				//they can even be accessed through concatenation
+				superman["real" + " " + "name"] 
+
+				//Undefined attributes will return undefined when accessed.
+				superman.city
+
+				//Values can even be set to be dependent on other values
+				const bewitched = true; 
+				const captainBritain = { name: 'Captain Britain', hero: bewitched ? false : true };
+
+				captainBritain
+
+
+				//Symbols are property keys that can be used by multiple objects.
+				const nameTwo = Symbol('name');
+				const supergirl = { [nameTwo]: 'Supergirl' };
+				supergirl[nameTwo];
+
+				const realNameTwo = Symbol('real name');
+
+				supergirl[realNameTwo] = 'Kara Danvers';
+
+				//By using symbols, objects that have similar properties can be accessed with the same keyword.
+				const daredevil = { [nameTwo]: 'Daredevil', [realNameTwo]: 'Matt Murdoch' }; 
+
+
+				//Methods, which are functions attahed to an object, can be called the same way as properties.
+				superman.fly()
+				superman['fly']()
+
+
+				//Custom function to discover all the properties of an object:
+				for(const key in superman) { 
+					console.log(key + ": " + superman[key]); 
+				}
+
+				//This function initializes a variable called 'key',  which is then assigned to each property name in the object. We then use the array notation and the property's name to call its value.
+
+
+				//Properties can be added, modified or deleted at any time
+				superman.city = "Metropolis";
+
+				superman.realName = "Kal-El";
+
+				delete superman.fly();
+
+				console.log(superman);
+
+
+				//Objects can contain other objects
+				const jla = { 
+					superman: { realName: 'Clark Kent' }, 
+					batman: { realName: 'Bruce Wayne' }, 
+					wonderWoman: { realName: 'Diana Prince' },
+					flash: { realName: 'Barry Allen' }, 
+					aquaman: { realName: 'Arthur Curry' }, 
+				}
+
+				//They can also be called with the dot notation
+				console.log(jla.wonderWoman.realName);
+
+
+				//Objects can also be used as parameters in functions
+
+				//Non-object parameters:
+				function greet({greeting,name,age}) { 
+					return `${greeting}! My name is ${name} and I am ${age} years old.`; 
+				}
+
+				greet({ greeting: `What's up dude`, age: 10, name: `Bart` });
+
+
+				//One clever way of making sure variable and function names don't overlap is to make those functions methods of an object. If a function is associated to an object, it's name is unique.
+				const myMaths = {
+					square(x) { 
+						return x * x; 
+					}, 
+					mean(array,callback) { 
+						if (callback) { array.map( callback ); } 
+						
+						const total = array.reduce((a, b) => a + b); 
+						return total/array.length; 
+					} 
+				};
+
+				function square() {
+					console.log("It's a square!");
+				}
+
+				console.log(myMaths.square(5));
+				square();
+
+				//The JavaScript program itself has some built in objects. One of the most significant is the Math object, which has many useful methods, including: absolute value, rounding, exponents, square roots, cube roots, hypotenuse, logarithms, max, min, trigonometric functions, and random numbers.
+
+				//ORIGINAL EXERCISE:
+
+				var avengers = {
+					spiderman: { name: 'Spider-Man', realName: 'Peter Parker', nationality: 'USA'},
+					ironman: { name: 'Iron Man', realName: 'Tony Stark'},
+					captainamerica: { name: 'Captain America', realName: 'Steve Rogers', nationality: 'USA'},
+					hulk: { name: 'The Hulk', realName: 'Bruce Banner', nationality: 'USA'},
+					blackwidow: { name: 'Black Widow', realName: 'Natasha Romanov', nationality: 'Russian'},
+					hawkeye: { name: 'Hawk Eye', realName: 'Clint Barton', nation: 'USA'},
+					thor: { name: 'Thor', realName: 'Thor Odinson', nation: 'Asgard'},
+					blackpanther: { name: 'Black Panther', realName: 't\'challa', nation: 'Wakandan'},
+
+					assemble() {
+						Object.keys(avengers).forEach((key) => console.log(avengers[key].name));
+				}
+			}
+
+				avengers.assemble();
+
+		</script>
+	</head>
+	<body>
+		<h3>For output of the exercises, please refer to the JavaScript console</h3>
+	</body>
+</html>
