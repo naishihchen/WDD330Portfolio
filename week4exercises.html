@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<script>
+
+			//ORIGINAL EXERCISES
+			
+			//define class using ES6 syntax
+			class Bird {
+				constructor(sound="chirp", food="worms", color="brown") {
+					this.sound = sound;
+					this.food = food;
+					this.color = color;
+				}
+
+				fly() {
+						return "Flap Flap Flap!";
+					}
+			}
+
+			//initialize instance
+			var cardinal = new Bird(undefined, undefined, 'red');
+
+			//print variables
+			console.log(cardinal);
+
+			//add new value to prototype
+			Bird.prototype.home = "Tree";
+
+			//print new home variable
+			console.log(cardinal.home);
+
+			//Initialize new instances of birds
+			var eagle = new Bird("screech", "fish", undefined);
+			var owl = new Bird("hoot", "mice", undefined);
+
+			//print new instances
+			console.log(eagle);
+			console.log(owl);
+
+			//adding new method and new variable to prototype
+
+			//add dive method for eagles
+			Bird.prototype.dive = function() {
+				return "Swoop downwards with great speed!";
+			}
+
+			//add awake during night variable for owls
+			Bird.prototype.awakeDuring = "Night";
+
+			//oops! Now all birds are set to sleep during the day. Better change that for the other birds.
+			cardinal.awakeDuring = "Day";
+			eagle.awakeDuring = "Day";
+
+			///new class with privatized variables
+			class privateBird {
+				constructor(name, sound="chirp", food="worms", color="brown", home="tree", awakeDuring="Day") {
+					this.name = name;
+
+					//Setting each variable except name to be private
+					let _sound = sound;
+
+					this.setSound = sound => { 
+						if(typeof sound === 'string')
+							{ return _sound = sound; } 
+						else { 
+							throw new Error('Sound must be a string'); }};
+
+					this.getSound = () => _sound;
+
+					//With its own getters and setters
+					let _food = food;
+
+					this.setFood = food => { 
+						if(typeof food === 'string')
+							{ return _food = food; } 
+						else { 
+							throw new Error('food must be a string'); }};
+
+					this.getFood = () => _food;
+
+					//This is a lot of getters and setters
+					let _color = color;
+
+					this.setColor = color => { 
+						if(typeof color === 'string')
+							{ return _color = color; } 
+						else { 
+							throw new Error('Color must be a string'); }};
+
+					this.getColor = () => _color;
+
+					//It would be more efficient to make a strign validator function and have every setter call it
+					let _home = home;
+					
+					this.setHome = home => { 
+						if(typeof home === 'string')
+							{ return _home = home; } 
+						else { 
+							throw new Error('Home must be a string'); }};
+					
+					this.getHome = () => _home;
+
+					//If this were going to be a professional program, I'd do that.
+					let _awakeDuring = awakeDuring;
+					
+					this.setAwakeDuring = awakeDuring => { 
+						if(typeof awakeDuring === 'string')
+							{ return _awakeDuring = awakeDuring; } 
+						else { 
+							throw new Error('Awake During must be a string'); }};
+					
+					this.getAwakeDuring = () => _awakeDuring;
+				}
+
+				dive() {
+					return "Swoop downwards with great speed!";
+				}
+			}
+
+			var bluebird = new privateBird('bluebird', undefined, undefined, 'blue', undefined, undefined);
+
+			//get bluebird variables;
+			console.log(bluebird.getSound());
+			console.log(bluebird.getFood());
+			console.log(bluebird.getColor());
+			console.log(bluebird.getHome());
+			console.log(bluebird.getAwakeDuring());
+			console.log(bluebird.name);
+
+
+			//Birds are more diverse than I thought.
+			//It's better to have one base bird class and have different bird classes extended from it.
+
+			class Eagle extends privateBird {
+				constructor(name) {
+					super(name, "screech", "fish", "brown", "eyrie", "Day");
+				}
+
+				dive() {
+					return "Swoop downwards and catch a fish for lunch!";
+				}
+			}
+
+			//With the new Eagle class, all of the things unique to eagles are already set.
+			var baldEagle = new Eagle("Bald Eagle");
+
+			//You can see the eagle variables are new.
+			console.log(baldEagle.getSound());
+			console.log(baldEagle.getFood());
+			console.log(baldEagle.getColor());
+			console.log(baldEagle.getHome());
+			console.log(baldEagle.getAwakeDuring());
+			console.log(baldEagle.name);
+
+			//the Eagle class has already inherited the private variables from the privateBird class.
+			//You can't change them in this way.
+			baldEagle.food = "candy";
+
+			console.log(baldEagle.getFood());
+
+			//Howver, you can still change it to weird values in the legal way, so it's not perfect.
+			baldEagle.setFood("candy");
+
+			console.log(baldEagle.getFood());
+
+			//Finally, an example of polymorphism
+			console.log(bluebird.dive());
+			console.log(baldEagle.dive());
+
+			//As you can see, though these two functions are named the same
+			//And one is inherited from the other,
+			//The dive function has been overwritten.
+		</script>
+	</head>
+	<body>
+		<h3>For output of the exercises, please refer to the JavaScript console</h3>
+	</body>
+</html>
