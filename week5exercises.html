@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<script>
+			//There are three types of bugs! Errors, Exceptions and Warnings.
+
+			//Errors are when something goes wrong in the code. 
+			//It could be a user error, programmer error or a system error.
+			
+
+			//One very common type of error is an exception.
+			//This is an error that displays an error message when activated, letting the user know what has triggered it.
+
+			//This will trigger a ReferenceError
+			//unicorn();
+
+			//This will trigger a SyntaxError, as the function call is missing a closing parenthesis.
+			function rideUnicorn(rider) {
+				return rider + " rides a unicorn";
+			}
+
+
+			//console.log(rideUnicorn("Steve");
+
+			//The above error will also give a Stack Trace, which shows exactly where the error was triggered, allowing you to diagnose what the error is.
+
+
+			//Warnings are errors in programming that are not serious enough to crash the program. Javascript is a particularly intelligent language and can handle ambiguity in programming.
+
+			//This will generate a warning that the 'pi' variable has not been initialized.
+			pi = 3.14159;
+
+			//Strict mode was introduced into JavaScript as a way of detecting bad coding practices that made code less efficient. Strict mode treats warnings and minor exceptions aas errors.
+
+			//You can use strict more in specific functions, or in general use.
+
+			//This code, which previously triggered a warning, now triggers an error.
+			function triggerError() {
+				'use strict'
+				myPi = 3.14159;
+			}
+
+			//triggerError();
+
+			//As new functions and features are added and removed from the Web constantly, programs need to be able to check if features are available and act accordingly.
+			if (window.boat) {
+				boat.goFishing();
+			}
+
+
+			//Alerts are a common feature in debugging, since they pause a program in order to send a notification to the user. This allows developers to track a program as it runs.
+			function nameMe(name) {
+				if (typeof name === "string") {
+					alert("Your name is " + name);
+				} else {
+					alert("Please enter an actual name");
+				}
+
+			}
+
+			var input = 4;
+
+			console.log(typeof input);
+
+			nameMe(input);
+
+			//There are also built-in JavaScript functions used for debugging, like the 'throw' function. Throw allows a user to create a custom breakpoint that will stop the program. 
+
+			function nameMeToo(name) {
+				if (typeof name !== "string") {
+					throw new TypeError('Names must be a string type');
+				}
+			}
+
+			//nameMeToo(input);
+
+			//Errors can also be caught using the try-catch method. The try block attempts to execute some code, and if an error is triggered, the catch block prints the error and executes other pieces of code.
+
+			try {
+				nameMeToo(input);
+			} catch (error) {
+				console.error("Error occurred: ", error);
+			}
+		</script>
+	</head>
+	<body>
+		<h3>For output of the exercises, please refer to the JavaScript console</h3>
+	</body>
+</html>
