@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Just Do It</title>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="todo.css" media="screen">
+	</head>
+	<body>
+		<main>
+			<header>
+  				<h2>Just Do It</h2>
+			</header>
+
+			<ul id="list">
+  				<li class="unchecked">Show list of tasks</li>
+			    <li class="unchecked">Add a new tasks</li>
+			    <li class="unchecked">Complete a task</li>
+			    <li class="unchecked">Remove a task</li>
+			    <li class="unchecked">Filter tasks</li>
+			    <li class="unchecked">Style</li>
+			</ul>
+			<div id="displayOptions">
+				<p id="tasksLeft"></p>
+				<div id="displayButtons">
+					<button id="displayAll" class="displayButton">All</button>
+					<button id="displayActive" class="displayButton">Active</button>
+					<button id="displayCompleted" class="displayButton">Completed</button>
+				</div>
+			</div>
+			
+			<div id="fixed">
+		   		<input type="text" id="listInput" placeholder="Next Item">
+		    	<button onclick="newItem()" class="addBtn">&plus;</button>
+			</div>
+		</main>
+	</body>
+	<script src="ToDos.js"></script>
+</html>
