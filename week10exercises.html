@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+	</head>
+	<body>
+		<h3>NASA's Photo of the day!</h3>
+		<button id='space'>Space Photos</button> 
+		<div id='output'></div>
+		<img src="" id="spacePhoto" alt="space photo"> 
+	</body>
+		<script>
+			//The purpose of the fetch function is to get resources from other networks and websites 
+			//without preventing the rest of the program from executing.
+			//The fetch function also makes sure that if the network cannot locate the resource,
+			//or if the destination network is not available, the program will not crash and can continue.
+
+			//fetch('http://example.com/movies.json')
+  			//.then(response => response.json())
+  			//.then(data => console.log(data));
+
+
+  			//Initializing the credentials for the fetch function will allow you to send information from the host website to the destination.
+
+  			//fetch('https://example.com', {
+  			//credentials: 'include'
+			//});
+
+
+			//Even though "fetch" typically means to bring something back, fetch can also be used to send data using the POST method.
+
+			//const data = { username: 'example' };
+			// fetch('https://example.com/profile', {
+		//   method: 'POST', // or 'PUT'
+		//   headers: {
+		//     'Content-Type': 'application/json',
+		//   },
+		//   body: JSON.stringify(data),
+		// })
+		// .then(response => response.json())
+		// .then(data => {
+		//   console.log('Success:', data);
+		// })
+		// .catch((error) => {
+		//   console.error('Error:', error);
+		// });
+
+
+		//Files can be sent in many formats, including JSON (above), and inputs (below).
+
+		//const formData = new FormData();
+		// const fileField = document.querySelector('input[type="file"]');
+		// formData.append('username', 'abc123');
+		// formData.append('avatar', fileField.files[0]);
+		// fetch('https://example.com/profile/avatar', {
+		//   method: 'PUT',
+		//   body: formData
+		// })
+		// .then(response => response.json())
+		// .then(result => {
+		//   console.log('Success:', result);
+		// })
+		// .catch(error => {
+		//   console.error('Error:', error);
+		// });
+
+
+		//Even multiple files can be uploaded at once.
+
+		//const formData = new FormData();
+		// const photos = document.querySelector('input[type="file"][multiple]');
+		// formData.append('title', 'My Vegas Vacation');
+		// for (let i = 0; i < photos.files.length; i++) {
+		//   formData.append('photos', photos.files[i]);
+		// }
+		// fetch('https://example.com/posts', {
+		//   method: 'POST',
+		//   body: formData,
+		// })
+		// .then(response => response.json())
+		// .then(result => {
+		//   console.log('Success:', result);
+		// })
+		// .catch(error => {
+		//   console.error('Error:', error);
+		// });
+
+
+		//Fetch functions can even read files out line by line
+
+		//async function* makeTextFileLineIterator(fileURL) {
+		//   const utf8Decoder = new TextDecoder('utf-8');
+		//   const response = await fetch(fileURL);
+		//   const reader = response.body.getReader();
+		//   let { value: chunk, done: readerDone } = await reader.read();
+		//   chunk = chunk ? utf8Decoder.decode(chunk) : '';
+		//   const re = /\n|\r|\r\n/gm;
+		//   let startIndex = 0;
+		//   let result;
+		//   for (;;) {
+		//     let result = re.exec(chunk);
+		//     if (!result) {
+		//       if (readerDone) {
+		//         break;
+		//       }
+		//       let remainder = chunk.substr(startIndex);
+		//       ({ value: chunk, done: readerDone } = await reader.read());
+		//       chunk = remainder + (chunk ? utf8Decoder.decode(chunk) : '');
+		//       startIndex = re.lastIndex = 0;
+		//       continue;
+		//     }
+		//     yield chunk.substring(startIndex, result.index);
+		//     startIndex = re.lastIndex;
+		//   }
+		//   if (startIndex < chunk.length) {
+		//     // last line didn't end in a newline char
+		//     yield chunk.substr(startIndex);
+		//   }
+		// }
+		// async function run() {
+		//   for await (let line of makeTextFileLineIterator(urlOfFile)) {
+		//     processLine(line);
+		//   }
+		// }
+		// run();
+
+
+		//Fetches also easily accomodate error checking, to make sure that the program doesn't crash due to an asynchronous function the user probably forgot about.
+
+		//fetch('flowers.jpg')
+		  // .then(response => {
+		  //   if (!response.ok) {
+		  //     throw new Error('Network response was not ok');
+		  //   }
+		  //   return response.blob();
+		  // })
+		  // .then(myBlob => {
+		  //   myImage.src = URL.createObjectURL(myBlob);
+		  // })
+		  // .catch(error => {
+		  //   console.error('There has been a problem with your fetch operation:', error);
+		  // });
+
+
+		//Instead of inputting each small destination variable, you can combine them all into a request object.
+
+ 		//const myHeaders = new Headers();
+		// const myRequest = new Request('flowers.jpg', {
+		//   method: 'GET',
+		//   headers: myHeaders,
+		//   mode: 'cors',
+		//   cache: 'default',
+		// });
+		// fetch(myRequest)
+		//   .then(response => response.blob())
+		//   .then(myBlob => {
+		//     myImage.src = URL.createObjectURL(myBlob);
+		//   });
+		
+		</script>
+</html>
