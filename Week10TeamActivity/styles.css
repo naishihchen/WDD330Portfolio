@@ -1,0 +1,13 @@
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+  box-sizing: border-box;
+}
+
+ul {
+	border: 1px solid black;
+}
+
+li {
+	background-color: #d4a372
+	margin: 5px;
+}
