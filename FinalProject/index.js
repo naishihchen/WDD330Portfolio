@@ -1,4 +1,4 @@
-import Photo from './Photo.js'
+import Photo from './photo.js'
 
 //The main gist of this week's lesson was asymmetric functions and their use in creating dynamic web pages.
 			//JavaScript itself has many functions to make this happen: callbacks, promises and json loaders.
