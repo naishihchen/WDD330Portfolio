@@ -44,7 +44,9 @@ import Photo from './photo.js'
 				.then( data => {return data; }) 
 				.catch( error => console.log('There was an error:', error)),false;
 
-				let photoObject = new Photo(photoData);
+				if (photoData) {
+					let photoObject = new Photo(photoData);
+				}
 
 				pictureDiv.innerHTML = "";
 
@@ -97,7 +99,9 @@ import Photo from './photo.js'
 					photoData.hdurl = "";
 				}
 
-				let photoObject = new Photo(photoData);
+				if (photoData) {
+					let photoObject = new Photo(photoData);
+				}
 
 				pictureDiv.innerHTML = "";
 
