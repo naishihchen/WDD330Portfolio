@@ -22,12 +22,12 @@ body * {
 
 img {
 	max-width: 50em;
+	max-height: 30em;
 }
 
 #card {
 	min-width: 20em;
-	max-width: 50em;
-	max-height: 50em;
+	max-width: 60em;
 	transition: transform 0.8s;
 }
 
@@ -67,6 +67,7 @@ img {
 .unflipped  #card-back{
   opacity: 0;
   font-size: 0.1em;
+  max-height: 3em;
 }
 
 #share-buttons {
