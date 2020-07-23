@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<p id="share-buttons">
+			<a target='_blank' href='https://www.facebook.com/share.php?u=file:///C:/Users/patri/Desktop/WDD330/WDD330Portfolio/FinalProject/APODCards.html'>
+			<img src='https://www.matthewb.id.au/social/facebook.png' alt='Facebook'/></a>
+			<a target='_blank' href='https://www.reddit.com/submit?url=file:///C:/Users/patri/Desktop/WDD330/WDD330Portfolio/FinalProject/APODCards.html'>
+			<img src='https://www.matthewb.id.au/social/reddit.png' alt='Reddit'/></a>
+			<a target='_blank' href='https://twitter.com/intent/tweet?text=&url=file:///C:/Users/patri/Desktop/WDD330/WDD330Portfolio/FinalProject/APODCards.html'>
+			<img src='https://www.matthewb.id.au/social/twitter.png' alt='Tweet' /></a>
+		</p>
+		<div id="photoDisplay">
+			<h3>NASA's Photo of the day!</h3>
+			<p>Search for a photo on a specific day! Please use the format 'yyyy-mm-dd'</p>
+			<p>NASA's Photo Of The Day started on June 16th, 1995, so please pick a date on or afterwards.</p>
+			<div id="search-container">
+				<input type="text" id="searchbar">
+			</div>
+			<div id="buttons">
+				<button id='search'>Get My Photo</button>
+				<button id="random">Random Photo</button>
+			</div> 
+			<p>Click on the photo to discover more info about it!</p>
+			<p id="loading"></p>
+			<div id='card' class="unflipped">
+				<div class="card-side" id="card-face">
+					<img src="image-placeholder.png" id="spacePhoto" alt="space photo"> 
+				</div>
+				<div class="card-side" id="card-back">
+					<p id="title">Title: </p>
+					<p id="description">Description: </p>
+					<p id="hdurl">HD URL: </p>
+					<p id="url">URL: </p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="index.js" type="module" ></script>
+</html>
