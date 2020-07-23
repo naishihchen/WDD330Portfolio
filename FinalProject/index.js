@@ -99,9 +99,7 @@ import Photo from './photo.js'
 					photoData.hdurl = "";
 				}
 
-				if (photoData) {
-					let photoObject = new Photo(photoData);
-				}
+				let photoObject = new Photo(photoData);
 
 				pictureDiv.innerHTML = "";
 
